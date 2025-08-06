@@ -48,9 +48,9 @@ let counter3 = 0;
 let intervalId3 = setInterval(() => {
     counter3++;
     console.log('Counter3:', counter3);
-    if (counter3 >= 25) {
+    if (counter3 >= 7) {
         clearInterval(intervalId3);
-        console.log('Interval 3 stopped after 25 iterations.');
+        console.log('Interval 3 stopped after 7 iterations.');
     }
 }, 1000);
 
@@ -81,3 +81,9 @@ let intervalId4 = setInterval(() => {
         console.log('Interval 4 stopped after 5 iterations.');
     }
 }, 1000);
+
+const res = await fetch('https://nodejs.org/api/documentation.json');
+if (res.ok) {
+  const data = await res.json();
+  console.log(data);
+} 
