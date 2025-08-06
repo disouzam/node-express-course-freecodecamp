@@ -5,7 +5,7 @@ let intervalId = setInterval(() => {
     console.log('Counter:', counter);
     if (counter >= 5) {
         clearInterval(intervalId);
-        console.log('Interval stopped after 5 iterations.');
+        console.log('Interval 1 stopped after 5 iterations.');
     }
 }, 1000);
 
@@ -51,5 +51,33 @@ let intervalId3 = setInterval(() => {
     if (counter3 >= 25) {
         clearInterval(intervalId3);
         console.log('Interval 3 stopped after 25 iterations.');
+    }
+}, 1000);
+
+
+const ac2 = new AbortController();
+
+// Use either the onabort property...
+ac2.signal.onabort = () => console.log('ac2 aborted!');
+
+// Or the EventTarget API...
+ac2.signal.addEventListener('abort', (event) => {
+  console.log(event.type);  // Prints 'abort'
+}, { once: true });
+
+ac2.abort();
+
+
+const ac3 = new AbortController();
+ac3.abort(new Error('boom!'));
+console.log(ac3.signal.reason);  // Error: boom! 
+
+let counter4 = 0;
+let intervalId4 = setInterval(() => {
+    counter4++;
+    console.log('Counter4:', counter4);
+    if (counter4 >= 5) {
+        clearInterval(intervalId4);
+        console.log('Interval 4 stopped after 5 iterations.');
     }
 }, 1000);
