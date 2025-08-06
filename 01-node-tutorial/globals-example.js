@@ -11,3 +11,9 @@ console.log(`__filename: ${__filename}`);
 console.log(`require: ${require}`);
 console.log(`module: ${module}`);
 console.log(`process: ${process}`);
+
+setInterval(() => {
+  console.log("Hello World");
+}, 1000);
+
+// Further information about globals: https://nodejs.org/api/globals.html
